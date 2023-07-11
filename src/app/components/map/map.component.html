@@ -1,0 +1,33 @@
+<div class="pb-4">
+  <input
+    #addressSearch
+    type="text"
+    class="border rounded-sm p-1 w-80 bg-gray-200 text-gray-900 placeholder:text-gray-600 hover:bg-gray-300 max-sm:p-0 max-sm:w-52"
+    placeholder="Enter address here..."
+    (keyup.enter)="searchAddress(addressSearch.value)"
+  />
+
+  <button
+    (click)="searchAddress(addressSearch.value)"
+    class="bg-slate-200 text-slate-900 ml-2 p-1 rounded-md hover:bg-slate-300 max-sm:py-[0.1rem] max-sm:px-1"
+  >
+    Search
+  </button>
+  <div
+    *ngIf="addressErrorMsg.length !== 0"
+    class="text-red-200 text-sm italic font-bold mt-2"
+  >
+    {{ addressErrorMsg }}
+  </div>
+</div>
+
+<div
+  #mapContainer
+  class="w-full h-full border rounded-xl shadow-sm shadow-white"
+>
+  <img
+    *ngIf="isLoading"
+    src="assets/icons/spinner.gif"
+    class="w-28 h-28 inline-block justify-center"
+  />
+</div>
